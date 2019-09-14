@@ -5,8 +5,9 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour
 {
-    [Tooltip("In ms^-1")][SerializeField] private float xSpeed = 50f;
-    [Tooltip("In m")] [SerializeField] private float xRange = 12f;
+    [Tooltip("In ms^-1")][SerializeField] private float Speed = 50f;
+    [Tooltip("In m")] [SerializeField] private float xRange = 10f;
+    [Tooltip("In m")] [SerializeField] private float yRange = 6f;
     [SerializeField] float speedMultiplier = 1f;
 
 
@@ -20,13 +21,20 @@ public class Player : MonoBehaviour
     void Update()
     {
         float xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        float xOffset = xThrow * xSpeed * Time.deltaTime * speedMultiplier;
-        float rawXpos = transform.localPosition.x + xOffset;       
+        float yThrow = CrossPlatformInputManager.GetAxis("Vertical");
+
+        float xOffset = xThrow * Speed * Time.deltaTime * speedMultiplier;
+        float yOffset = yThrow * Speed * Time.deltaTime * speedMultiplier;
+
+        float rawXpos = transform.localPosition.x + xOffset;
+        float rawYpos = transform.localPosition.y + yOffset;
+
         float clampedXpos = Mathf.Clamp(rawXpos, -xRange, xRange);
+        float clampedYpos = Mathf.Clamp(rawYpos, -yRange, yRange);
 
         //below method will change the local position of the player-plane
-        //a new vector3(x,y,z) -- only local x pos need to be updated rest will be same
-        transform.localPosition = new Vector3(clampedXpos, transform.localPosition.y, transform.localPosition.z);
+        //a new vector3(x,y,z) -- only local x & y pos need to be updated rest will be same
+        transform.localPosition = new Vector3(clampedXpos, clampedYpos, transform.localPosition.z);
         //print(transform.localPosition);
     }
 }

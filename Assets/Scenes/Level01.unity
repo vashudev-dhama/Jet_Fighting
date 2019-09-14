@@ -750,8 +750,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d1cd7825c0cb24988aa6a672d31b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpeed: 50
-  xRange: 12
+  Speed: 50
+  xRange: 10
+  yRange: 6
   speedMultiplier: 1
 --- !u!1 &1429155851
 GameObject:
