@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
@@ -9,6 +10,10 @@ public class Player : MonoBehaviour
     [Tooltip("In m")] [SerializeField] private float xRange = 10f;
     [Tooltip("In m")] [SerializeField] private float yRange = 6f;
     [SerializeField] float speedMultiplier = 1f;
+    [SerializeField] float positionPitchFactor = -4.5f;
+    [SerializeField] float controlPitchFactor = -20f;
+
+    float xThrow, yThrow;
 
 
     // Start is called before the first frame update
@@ -20,8 +25,28 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        float yThrow = CrossPlatformInputManager.GetAxis("Vertical");
+        //Process the player's trasformations
+        ProcessTranslation();
+
+        //Process the player's rotation
+        ProcessRotation();
+
+    }
+
+    private void ProcessRotation()
+    {
+        float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
+        float pitchDueToControlThrow = yThrow * controlPitchFactor;
+        float pitch = pitchDueToPosition + pitchDueToControlThrow;
+        float yaw = 0f;
+        float roll = 0f;
+        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);//(x,y,z) ~ (pitch, yaw, roll)
+    }
+
+    private void ProcessTranslation()
+    {
+        xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
+        yThrow = CrossPlatformInputManager.GetAxis("Vertical");
 
         float xOffset = xThrow * Speed * Time.deltaTime * speedMultiplier;
         float yOffset = yThrow * Speed * Time.deltaTime * speedMultiplier;
@@ -35,6 +60,5 @@ public class Player : MonoBehaviour
         //below method will change the local position of the player-plane
         //a new vector3(x,y,z) -- only local x & y pos need to be updated rest will be same
         transform.localPosition = new Vector3(clampedXpos, clampedYpos, transform.localPosition.z);
-        //print(transform.localPosition);
     }
 }
