@@ -256,7 +256,7 @@ PrefabInstance:
     - target: {fileID: 4983801166292214332, guid: b93015a81a5566d4a99cba17461cb444,
         type: 3}
       propertyPath: m_Name
-      value: MusicPlayer
+      value: Music Player
       objectReference: {fileID: 0}
     - target: {fileID: 4983801166292214322, guid: b93015a81a5566d4a99cba17461cb444,
         type: 3}

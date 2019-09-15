@@ -8,7 +8,17 @@ public class MusicPlayer : MonoBehaviour
     //To keep music playing after loading scene 1 from splash screen.
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject); //Built-in function to keep the gameObject from destroying.
+        int numMusicPlayer = FindObjectsOfType<MusicPlayer>().Length;
+        //if more than one music player in scene then only distroy ourselves
+        if(numMusicPlayer > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject); //Built-in function to keep the gameObject from destroying.
+        }
+
     }
     
 }
