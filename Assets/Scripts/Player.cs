@@ -17,34 +17,24 @@ public class Player : MonoBehaviour
 
 
     float xThrow, yThrow;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    print("Player collide something");
-    //}
-
-    void OnTriggerEnter(Collider other)
-    {
-        print("Player trigger something");
-    }
-
+    bool isControlEnabled = true;
 
     // Update is called once per frame
     void Update()
     {
-        //Process the player's trasformations
-        ProcessTranslation();
+        if (isControlEnabled)
+        {
+            //Process the player's trasformations
+            ProcessTranslation();
 
-        //Process the player's rotation
-        ProcessRotation();
+            //Process the player's rotation
+            ProcessRotation();
+        }
+    }
 
+    void OnPlayerDeath() //called by string reference in collisionHandler.cs script
+    {
+        isControlEnabled = false;
     }
 
     private void ProcessRotation()
