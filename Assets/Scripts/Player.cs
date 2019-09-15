@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] float positionPitchFactor = -3f;
     [SerializeField] float controlPitchFactor = -20f;
     [SerializeField] float positionYawFactor = 2f;
-    [SerializeField] float controlRollFactor = 5f;
+    [SerializeField] float controlRollFactor = -20f;
 
 
     float xThrow, yThrow;
