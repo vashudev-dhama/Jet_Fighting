@@ -1562,6 +1562,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf374732b0ea2c34daa340dc2de7f746, type: 3}
+--- !u!1 &1253064951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7349841060511922055, guid: 233ce4951e6cdfc4ca5bb36fe0648f36,
+    type: 3}
+  m_PrefabInstance: {fileID: 7349841059850149106}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1275496171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7349841060922093093, guid: 233ce4951e6cdfc4ca5bb36fe0648f36,
+    type: 3}
+  m_PrefabInstance: {fileID: 7349841059850149106}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1337858435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2013,5 +2025,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7854660480350234930, guid: 233ce4951e6cdfc4ca5bb36fe0648f36,
+        type: 3}
+      propertyPath: guns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7854660480350234930, guid: 233ce4951e6cdfc4ca5bb36fe0648f36,
+        type: 3}
+      propertyPath: guns.Array.data[0]
+      value: 
+      objectReference: {fileID: 1275496171}
+    - target: {fileID: 7854660480350234930, guid: 233ce4951e6cdfc4ca5bb36fe0648f36,
+        type: 3}
+      propertyPath: guns.Array.data[1]
+      value: 
+      objectReference: {fileID: 1253064951}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 233ce4951e6cdfc4ca5bb36fe0648f36, type: 3}
